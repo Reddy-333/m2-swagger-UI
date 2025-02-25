@@ -1,8 +1,10 @@
 eureka:
   client:
     register-with-eureka: false
+
 server:
   port: 7075
+
 spring:
   application:
     name: gateway
@@ -20,6 +22,10 @@ spring:
           uri: lb://COMPANY-SERVICE  # ✅ Use service name if using Eureka
           predicates:
             - Path=/company/**
+        - id: Employee-service  # ✅ Fixed indentation
+          uri: lb://EMPLOYEE-SERVICE  # ✅ Fixed service name case
+          predicates:
+            - Path=/employee/**
 
 management:
   tracing:
